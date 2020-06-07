@@ -11,7 +11,7 @@ items = {'りんご':120, 'バナナ':200, 'オレンジ':130}
 for item_name in items:
     print('-----------------')
     print('現在の所持金は' + str(possession) + '円です。')
-    print(item_name + 'は、1個' + str(possession) + '円です。')
+    print(item_name + 'は、1個' + str(items[item_name]) + '円です。')
 
     input_count = input('購入する' + item_name + 'の個数を入力してください。')
     count = int(input_count)
@@ -31,4 +31,5 @@ for item_name in items:
     else:
         print('お金が足りず' + item_name + 'が買えません。。。')
         print('ATMに行きましょう。')
-print('全種類購入しました。残金は' + str(possession) + '円です。')
+        break
+    print('全種類購入できました！残金は' + str(possession) + '円です。')
