@@ -3,30 +3,32 @@
 合計金額と、残金に応じたメッセージを出力する。
 """
 
-apple_price = 200
-
 input_possession = input('所持金を入力してください。:')
 possession = int(input_possession)
 
-input_count = input('購入するりんごの個数を入力してください。:')
-count = int(input_count)
+items = {'りんご':120, 'バナナ':200, 'オレンジ':130}
 
-#支払い合計額算出
-total_price = apple_price * count
+for item_name in items:
+    print('-----------------')
+    print('現在の所持金は' + str(possession) + '円です。')
+    print(item_name + 'は、1個' + str(possession) + '円です。')
 
-print('購入するりんごの個数は' + str(count) + '個です。')
-print('購入合計金額は' + str(total_price) + '円です。')
-print('------')
+    input_count = input('購入する' + item_name + 'の個数を入力してください。')
+    count = int(input_count)
 
-#残金算出
-remaining_money = possession - total_price
+    print('購入するりんごの個数は' + str(count) + '個です。')
 
-if remaining_money >= apple_price:
-    print('りんごを' + str(count) + '個購入しました。')
-    print('まだりんごを購入可能です。')
-elif remaining_money == apple_price:
-    print('りんごを' + str(count) + '個購入しました。')
-    print('財布が空になりました。')
-else:
-    print('お金が足りずりんごが買えません。。。')
-    print('ATMに行きましょう。')
+    #支払い合計額算出
+    total_price = items[item_name] * count
+    print('購入合計金額は' + str(total_price) + '円です。')
+
+    if possession >= total_price:
+        print(item_name + 'を' + str(count) + '個購入しました。')
+        possession -= total_price
+        if possession == 0:
+            print('残金は0円です。')
+            break
+    else:
+        print('お金が足りず' + item_name + 'が買えません。。。')
+        print('ATMに行きましょう。')
+print('全種類購入しました。残金は' + str(possession) + '円です。')
